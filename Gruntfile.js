@@ -6,22 +6,11 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         sass: {
-            development: {
-                options: {
-                    style: 'nested',
-                    sourcemap: 'inline'
-                },
-                files: {
-                    '../scaffolding/shoptet.css': '../scaffolding/shoptet.scss',
-                    'dist/css/main.css': '_scss/main.scss'
-                }
-            },
             production: {
                 options: {
                     style: 'compressed'
                 },
                 files: {
-                    '../scaffolding/shoptet.css': '../scaffolding/shoptet.scss',
                     'dist/css/main.css': '_scss/main.scss'
                 }
             }
@@ -50,15 +39,6 @@ module.exports = function(grunt) {
             }
         },
         uglify: {
-            development: {
-                options: {
-                    mangle: false,
-                    compress: false
-                },
-                files: {
-                    'dist/js/build.js': pkg.jsFiles
-                }
-            },
             production: {
                 options: {
                     mangle: false,
@@ -74,8 +54,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['watch']);
     grunt.registerTask('build', ['uglify-js', 'compile-css']);
     grunt.registerTask('uglify-js', ['uglify:production']);
-    grunt.registerTask('uglify-js-dev', ['uglify:development']);
     grunt.registerTask('compile-css', ['sass:production']);
-    grunt.registerTask('compile-css-dev', ['sass:development']);
 
 };
